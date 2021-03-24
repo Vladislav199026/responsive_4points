@@ -5,29 +5,55 @@
 }
 body{
   font-family: 'Montserrat', sans-serif;
+  @include media(">=1024px"){
+    max-width:1024px;
+    margin:0 auto
+  }
 }
-header input[type="checkbox"]{
+  header{
+    input[type="checkbox"]{
       position: absolute;
       margin-left: -9999px;
     }
-@include media(">=320px"){
-  header{
     @include size(37px, 100%);
-    background: $OuterSpace;
-    display: flex;
-    justify-content: space-between;
-    padding-left: 19px;
-    align-items: center;
-    position: fixed;
-    z-index: 3;
+      background: $OuterSpace;
+      display: flex;
+      justify-content: space-between;
+      padding-left: 19px;
+      align-items: center;
+      position: fixed;
+      z-index: 3;
+    @include media(">=640px"){
+      height: 74px;
+      padding-left: 38px;
+    }
+    @include media(">=980px"){
+      height: 97px;
+      padding-left: 54px;
+      justify-content: start;
+      position: relative;
+    }
       h1{
         color:$Gallery;
         font-size: 12px;
         font-weight: 500;
-      }
+        @include media(">=640px"){
+          font-size: 23px;
+          font-weight: 500;
+        }
+        @include media(">=980px"){
+          display: none;
+        }
+      }   
   }
   main{
-    padding-top:37px
+    padding-top:37px;
+    @include media(">=640px"){
+      padding-top:74px;
+    }
+    @include media(">=980px"){
+      padding-top:0px
+    }
   }
   ul {
     a{
@@ -36,12 +62,23 @@ header input[type="checkbox"]{
       text-transform: uppercase;
       font-size: 24px;
       transition: .4s;
+       @include media(">=980px"){
+        font-size: 15px;
+        font-weight: 600;
+        word-spacing: 1px;
+        color:$Gallery;
+        transition: none;
+       }
         &:hover{
           color:$Java;
         }
     }
     li{
       padding-bottom: 20px;
+      @include media(">=980px"){
+        padding-right: 25px;
+        padding-bottom: 0px;
+      }
     }
     li.active a{
       color:$Java;
@@ -55,27 +92,50 @@ header input[type="checkbox"]{
       z-index: 3;
       cursor: pointer;
       overflow: hidden;
-        span{
-          @include size(2px, 15px);
-          background: $White;
-          position: absolute;
-          display: block;
-          left:calc(50% - 8px);
-          transition: all .5s ease;
-        }
+      @include media(">=640px"){
+        @include size(74px, 82px);
+      }
+      @include media(">=980px"){
+        display: none;
+        transform: none;
+      }
+    }
+    span{
+      @include size(2px, 15px);
+      background: $White;
+      position: absolute;
+      display: block;
+      left:calc(50% - 8px);
+      transition: all .5s ease;
+      @include media(">=640px"){
+        @include size(4px, 31px);
+        left:calc(50% - 15px);
+      }
     }
     label span:first-child{
       top:13px;
+      @include media(">=640px"){
+        top:26px;
+      }
     }
     label span:nth-child(2){
       top:17px;
+      @include media(">=640px"){
+        top:34px;
+      }
     }
     label span:nth-child(3){
       top:17px;
       opacity: 0;
+      @include media(">=640px"){
+        top:34px;
+      }
     }
     label span:last-child{
       top:21px;
+      @include media(">=640px"){
+        top:42px;
+      }
     }
     input[type="checkbox"]:checked ~ ul{
       transform:none
@@ -106,6 +166,11 @@ header input[type="checkbox"]{
       transform: translate(0, -100vh);
       transition: transform 1s ease;
       z-index: 2;
+      @include media(">=980px"){
+        @include size(97px, 100%);
+        display:contents;
+        background: $OuterSpace;
+      }
     }
   .free-psd{
     height: 175px;
@@ -114,11 +179,35 @@ header input[type="checkbox"]{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    @include media(">=640px"){
+      height: 348px;
+      padding:0px 50px;
+    }
+    @include media(">=980px"){
+      height: 549px;
+      padding:0px 78px;
+    }
+    @include media(">=1024px"){
+      height: 577px;
+    }
       h2{
         color:$White;
         font-size:20px;
         line-height: 20px;
         margin-bottom: 19px;
+        @include media(">=640px"){
+          font-size:39px;
+          line-height: 42px;
+          margin-bottom: 37px;
+          font-weight: 500;
+        }
+        @include media(">=980px"){
+          font-size:59px;
+          line-height: 67px;
+          margin-bottom: 59px;
+          font-weight: 500;
+          letter-spacing: 1px;
+        }
       }
       a{
         color:$AquaIsland;
@@ -128,6 +217,12 @@ header input[type="checkbox"]{
         font:500 11px/5px 'Montserrat', sans-serif;
         position: relative;
         width:130px;
+        @include media(">=640px"){
+          font:500 23px/11px 'Montserrat', sans-serif;
+        }
+        @include media(">=980px"){
+          font:500 35px/0px 'Montserrat', sans-serif;
+        }
           &:hover{
             color:$White
           }
@@ -139,10 +234,16 @@ header input[type="checkbox"]{
         @include position(-10px, -98px);
         position: absolute;
         display: block;
+        @include media(">=640px"){
+          font-size: 31px;
+          @include position(-9px, -317px);
+          font-weight: 600;
+        }
+         @include media(">=980px"){
+        font-size: 42px;
+         @include position(-20px, -565px);
+         }
       }
-      // .arrow-link:hover:before{
-      //   color:#fff
-      // }
   }
   .files-psd{
     min-height: 75px;
@@ -153,12 +254,33 @@ header input[type="checkbox"]{
     align-items: center;
     padding:10px 81px 10px 27px;
     position: relative;
+    @include media(">=640px"){
+      min-height: 150px;
+      padding:10px 153px 10px 54px;
+    }
+    @include media(">=980px"){
+      min-height: 234px;
+      padding:10px 183px 10px 84px;
+    }
+    @include media(">=1024px"){
+      min-height: 245px;
+      padding:10px 193px 10px 84px;
+    }
       span{
         @include size(71px, 100%);
         background: $MediumRedViolet;
         display: block;
         position: absolute;
         @include position(0px, 0px);
+        @include media(">=640px"){
+          width:143px;
+        }
+        @include media(">=980px"){
+          width:218px;
+        }
+        @include media(">=1024px"){
+          width:228px;
+        }
           &:before{
               content: "\f105";
               font-size: 24px;
@@ -166,6 +288,17 @@ header input[type="checkbox"]{
               @include position(calc(50% - 15px), calc(50% - 7px));
               position: absolute;
               display: block;
+              @include media(">=640px"){
+                font-size: 40px;
+                @include position(calc(50% - 21px), calc(50% - 13px));
+              }
+              @include media(">=980px"){
+                font-size: 40px;
+                font-weight: 600;
+              }
+              @include media(">=1024px"){
+                right: calc(50% - 11px);
+              }
           }
           &:hover::before{
             color:$Kobi
@@ -175,16 +308,28 @@ header input[type="checkbox"]{
         color:$AmethystSmoke;
         font-size: 10px;
         font-weight: 500;
+        @include media(">=640px"){
+          font-size: 19px;
+        }
+        @include media(">=980px"){
+          font-size: 22px;
+        }
       }
-      
   }
   .picture{
+    @include media(">=980px"){
+      display: flex;
+      flex-direction: row;
+    }
     span{
       min-height: 275px;
       background: $BlueGem;
       width:100%;
       position: relative;
       display: block;
+      @include media(">=980px"){
+        height: 100%;
+      }
       &:before{
         content: "\f105";
         font-size: 63px;
@@ -192,6 +337,10 @@ header input[type="checkbox"]{
         @include position(calc(50% - 43px), calc(50% - 8px));
         position: absolute;
         display: block;
+        @include media(">=980px"){
+          font-size: 50px;
+          @include position(calc(50% - 29px), calc(50% - 12px));
+        }
       }
       &:hover:before{
         color:$Heliotrope
@@ -200,255 +349,68 @@ header input[type="checkbox"]{
     img{
       width:100%;
       display: block;
+      @include media(">=980px"){
+       width: 33.3%;
+      }
     }
   }
   .content{
     @include size(100%, 100%);
     background: $Gallery;
     padding:34px 36px;
+    @include media(">=640px"){
+      padding:71px 74px;
+    }
+    @include media(">=980px"){
+      padding:71px 77px;
+    }
       a{
         text-decoration: none;
         color: $BlueChill;
         font-size: 19px;
         font-weight: 400;
         margin-bottom: 17px;
-        display: block;
+        display: inline-block;
+        @include media(">=640px"){
+          font-size: 30px;
+          font-weight: 500;
+          margin-bottom: 40px;
+        }
           &:hover{
             text-decoration: underline;
           }
       }
   }
   .text{
+    @include media(">=980px"){
+      columns: 370px 2;
+      column-gap: 74px;
+    }
       p{
         font-size: 14px;
         color:$Emperor;
         line-height: 22px;
         padding-bottom: 36px;
         text-align: justify;
+        @include media(">=640px"){
+          font-size: 21px;
+          line-height: 44px;
+          padding-bottom: 48px;
+          font-weight: 500;
+          word-spacing: 3px;
+        }
+        @include media(">=980px"){
+          font-size: 14px;
+          line-height: 26px;
+          padding-bottom: 44px;
+        }
       }
   }
   .text p:nth-child(3),
   .text p:nth-child(4){
     display: none;
+    @include media(">=980px"){
+      display: inline-block;
+    }
   }
   
-}
-@include media(">=640px"){
-  header{
-    height: 74px;
-    padding-left: 38px;
-      h1{
-        font-size: 23px;
-        font-weight: 500;
-      }
-      label{
-        @include size(74px, 82px);
-          span{
-            @include size(4px, 31px);
-            left:calc(50% - 15px);
-          }
-      }
-      label span:first-child{
-        top:26px;
-      }
-      label span:nth-child(2){
-        top:34px;
-      }
-      label span:nth-child(3){
-        top:34px;
-        opacity: 0;
-      }
-      label span:last-child{
-        top:42px;
-      }
-  }
-  main{
-    padding-top:74px
-  }
-  .free-psd{
-    height: 348px;
-    padding:0px 50px;
-      h2{
-        font-size:39px;
-        line-height: 42px;
-        margin-bottom: 37px;
-        font-weight: 500;
-      }
-      a{
-        font:500 23px/11px 'Montserrat', sans-serif;
-        position: relative;
-      }
-      .arrow-link:before{
-        font-size: 31px;
-        @include position(-9px, -317px);
-        font-weight: 600;
-      }
-  }
-  .files-psd{
-    min-height: 150px;
-    padding:10px 153px 10px 54px;
-      span{
-        width:143px;
-          &:before{
-              content: "\f105";
-              font-size: 40px;
-              @include position(calc(50% - 21px), calc(50% - 13px));
-          }
-      }
-      strong{
-        font-size: 19px;
-        font-weight: 500;
-      }
-  }
-  .picture{
-    .arrow{
-      height: 551px;
-    }
-  }
-  .content{
-    padding:71px 74px;
-      a{
-        font-size: 30px;
-        font-weight: 500;
-        margin-bottom: 40px;
-      }
-      p{
-        font-size: 21px;
-        line-height: 44px;
-        padding-bottom: 48px;
-        font-weight: 500;
-        word-spacing: 3px;
-      }
-  }
-}
-@include media(">=980px"){
-  header{
-    height: 97px;
-    padding-left: 54px;
-    justify-content: start;
-    position: relative;
-      h1{
-        display: none;
-      }
-      label{
-        display: none;
-        transform: none;
-      }
-  }
-  main{
-    padding-top:0px
-  }
-  ul {
-    @include size(97px, 100%);
-    display:contents;
-    background: $OuterSpace;
-        li{
-          padding-right: 25px;
-          padding-bottom: 0px;
-            a{
-              font-size: 15px;
-              font-weight: 600;
-              word-spacing: 1px;
-              color:$Gallery;
-              transition: none;
-            }
-        }
-    }
-  .free-psd{
-    height: 549px;
-    padding:0px 78px;
-      h2{
-        font-size:59px;
-        line-height: 67px;
-        margin-bottom: 59px;
-        font-weight: 500;
-        letter-spacing: 1px;
-      }
-      a{
-        font:500 35px/0px 'Montserrat', sans-serif;
-      }
-      .arrow-link:before{
-        font-size: 42px;
-        @include position(-20px, -565px);
-        
-      }
-  }
-  .files-psd{
-    min-height: 234px;
-    padding:10px 183px 10px 84px;
-      span{
-        width:218px;
-          &:before{
-              font-size: 40px;
-              @include position(calc(50% - 21px), calc(50% - 13px));
-              font-weight: 600;
-          }
-      }
-      strong{
-        font-size: 22px;
-        font-weight: 500;
-      }
-  }
-  .picture{
-    display: flex;
-    flex-direction: row;
-    span{
-      height: 100%;
-    }
-    a{
-      @include size(auto, 33.4%);
-    }
-    .arrow-picture{
-        &:before{
-            content: "\f105";
-            font-size: 50px;
-            @include position(calc(50% - 29px), calc(50% - 12px));  
-        }
-    }
-    img{
-      width: 33.3%;
-    }
-  }
-  .content{
-    padding:71px 77px;
-      a{
-        font-size: 30px;
-        font-weight: 500;
-        margin-bottom: 40px;
-      }
-  }
-  .text{
-    columns: 370px 2;
-    column-gap: 74px;
-    p{
-      font-size: 14px;
-      line-height: 26px;
-      padding-bottom: 44px;
-      font-weight: 500;
-      word-spacing: 3px;
-    }
-  }
-  .text p:nth-child(3),
-  .text p:nth-child(4){
-    display: inline-block;
-  }
-}
-@include media(">=1024px"){
-  body{
-    max-width:1024px;
-    margin:0 auto
-  }
-  .free-psd{
-    height: 577px;
-  }
-  .files-psd{
-    min-height: 245px;
-    padding:10px 193px 10px 84px;
-      span{
-        width:228px;
-          &:before{
-            right: calc(50% - 11px);
-        }
-      }
-  }
-}
