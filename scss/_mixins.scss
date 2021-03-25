@@ -1,8 +1,8 @@
-@mixin size($height, $width){
+@mixin size ($height, $width) {
   height: $height;
   width: $width
 }
-@mixin position(){
+@mixin position ($top, $right) {
   top: $top;
   right: $right;
 }
