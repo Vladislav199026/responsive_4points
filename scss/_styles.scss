@@ -4,86 +4,181 @@
   box-sizing: border-box;
 }
 body{
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Montserrat', sans-serif, 'Open Sans', sans-serif; 
   @include media(">=1024px"){
     max-width:1024px;
     margin:0 auto
   }
 }
-  header{
-    input[type="checkbox"]{
-      position: absolute;
-      margin-left: -9999px;
-    }
-    @include size(37px, 100%);
-      background: $OuterSpace;
-      display: flex;
-      justify-content: space-between;
-      padding-left: 19px;
-      align-items: center;
-      position: fixed;
-      z-index: 3;
+header{
+  input[type="checkbox"]{
+    position: absolute;
+    margin-left: -9999px;
+  }
+  @include size(37px, 100%);
+    background: $OuterSpace;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 19px;
+    align-items: center;
+    position: fixed;
+    z-index: 3;
+  @include media(">=640px"){
+    height: 74px;
+    padding-left: 38px;
+  }
+  @include media(">=980px"){
+    height: 97px;
+    padding-left: 54px;
+    justify-content: start;
+    position: relative;
+  }
+  h1{
+    color:$Gallery;
+    font-size: 12px;
+    font-weight: 500;
     @include media(">=640px"){
-      height: 74px;
-      padding-left: 38px;
+      font-size: 23px;
+      font-weight: 500;
     }
     @include media(">=980px"){
-      height: 97px;
-      padding-left: 54px;
-      justify-content: start;
-      position: relative;
+      display: none;
     }
-      h1{
-        color:$Gallery;
-        font-size: 12px;
-        font-weight: 500;
-        @include media(">=640px"){
-          font-size: 23px;
-          font-weight: 500;
-        }
-        @include media(">=980px"){
-          display: none;
-        }
-      }   
+  }   
+}
+main{
+  padding-top:37px;
+  @include media(">=640px"){
+    padding-top:74px;
   }
-  main{
-    padding-top:37px;
-    @include media(">=640px"){
-      padding-top:74px;
-    }
-    @include media(">=980px"){
-      padding-top:0px
-    }
+  @include media(">=980px"){
+    padding-top:0px
   }
-  ul {
-    a{
-      text-decoration: none;
-      color:$White;
-      text-transform: uppercase;
-      font-size: 24px;
-      transition: .4s;
-       @include media(">=980px"){
-        font-size: 15px;
-        font-weight: 600;
-        word-spacing: 1px;
-        color:$Gallery;
-        transition: none;
-       }
-        &:hover{
-          color:$Java;
-        }
-    }
-    li{
-      padding-bottom: 20px;
+}
+ul.nav {
+  position:absolute;
+  top:0px;
+  left:0px;
+  @include size(100vh, 100%);
+  display:flex;
+  flex-direction: column;
+  background: $Shark;
+  padding-top:50px;
+  align-items: center;
+  transform: translate(0, -100vh);
+  transition: transform 1s ease;
+  z-index: 2;
+  @include media(">=980px"){
+    @include size(97px, 100%);
+    display:contents;
+    background: $OuterSpace;
+  }
+  a{
+    text-decoration: none;
+    color:$White;
+    text-transform: uppercase;
+    font-size: 24px;
+    transition: .4s;
       @include media(">=980px"){
-        padding-right: 25px;
-        padding-bottom: 0px;
+      font-size: 15px;
+      font-weight: 600;
+      word-spacing: 1px;
+      color:$Gallery;
+      transition: none;
+      }
+      &:hover{
+        color:$Java;
+        transition: .4s;
+      }
+  }
+  & > li{
+    padding-bottom: 20px;
+    @include media(">=980px"){
+      margin-right: 25px;
+      padding-bottom: 0px;
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    &:hover{
+      div > ul{
+        @include media(">=980px"){
+        display: block;
+        }
       }
     }
-    li.active a{
-      color:$Java;
+    & > div{
+      position: absolute;
+        display: block;
+        @include position(14px, calc(50% - 100px));
+        padding-top:42px
+    }
+    & > div > ul{
+      display: none;
+      @include media(">=980px"){
+        padding-top: 22px;
+        text-align: center;
+        background:$Mandy;
+        width:200px;
+        // display: block;
+        position: relative;
+        &:after{
+          content:"";
+          @include position(-17px, calc(50% - 10px));
+          position: absolute;
+          border: 8px solid transparent;
+          border-bottom: 9px solid $Mandy;
+        }
+        & > li{
+          padding-bottom: 22px;
+          position: relative;
+          a{
+            color:$White;
+            font: 400 14px 'Open Sans', sans-serif;
+            text-transform: none;
+            &:hover{
+              color:$OuterSpace
+            }
+          }
+          & > div > ul{
+            background: $Mandy;
+            padding: 15px;
+            width: 149px;
+            text-align: left;
+            position: relative;
+            &:after{
+          content:"";
+          top:17px;
+          left:-16px;
+          position: absolute;
+          border: 8px solid transparent;
+          border-right: 9px solid $Mandy;
+        }
+            li{
+              padding-bottom: 15px;
+            }
+          }
+        }
+        li:hover{
+          div{
+            @include media(">=980px"){
+              display: block;
+            }
+          }
+        }
+        div{
+            position: absolute;
+            @include position (-14px, -159px);
+            padding-left: 50px;
+            display: none;
+          }
+      }
     }
   }
+  li.active a{
+    color:$Java;
+  }
+}
     
     label{
       @include size(37px, 41px);
@@ -153,25 +248,6 @@ body{
     }
     input[type="checkbox"]:checked + label span:last-child{
       transform: translate(100px, 0);
-    }
-    ul {
-      position:absolute;
-      top:0px;
-      left:0px;
-      @include size(100vh, 100%);
-      display:flex;
-      flex-direction: column;
-      background: $Shark;
-      padding-top:50px;
-      align-items: center;
-      transform: translate(0, -100vh);
-      transition: transform 1s ease;
-      z-index: 2;
-      @include media(">=980px"){
-        @include size(97px, 100%);
-        display:contents;
-        background: $OuterSpace;
-      }
     }
   .free-psd{
     height: 175px;
